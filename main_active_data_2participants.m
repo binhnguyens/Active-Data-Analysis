@@ -1,10 +1,26 @@
+%%%%%%%%%%%%%%
+% This file will take both sensor and activity data to plot them against each other
+% 
+% The purpose is to 
+% 1. See when the particiapnt answers the questionnaire
+% 2. Window the particiapnts passive data to when they answered the questionnaire
+% 
+% For example:
+% Ted answers a questionnaire Monday and Thursday
+% This program will plot passive data from Monday to Thursday and indicate that as 
+% Questionnaire 1. Followed by that, this program will plot the passive data from Thursday
+% to present day (as it is the most recent analysis of how the participant is feeling)
+% 
+% In result, you will have the windowed passive data in respect to active 
+%%%%%%%%%%%%%%
+
 %% Pre-face material
 
 clear; clc; close all;
 format long;
 
 %% Import Data
-path = 'Participant Data/';
+path = '/Users/binhnguyen/Downloads/Participant Data/';
 
 subjects = cell (1,8);
 subjects{3} = 'U1320514293';
@@ -13,7 +29,7 @@ subjects{10}= 'U8920175053';
 subject = 10;
 
 
-if (subject == 3)% % Subject 3
+if (subject == 3)% Subject 3
 filename = strcat (subjects{subject},'/result_event.json');
 sensor_path = 'DiiGExtractTool/U1320514293_lamp.accelerometer_1621036800000_1629504000000.csv';
 
@@ -122,9 +138,6 @@ for j = 1:(q_len-1) % Index in the Questionnaire
     end
     
 end
-
-
-
 
 
 %% Preparing for windowing of passive data
